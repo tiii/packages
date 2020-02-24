@@ -106,7 +106,7 @@ cred = cs:option(DynamicList, "credentials", translate("DNS API credentials"),
 cred.datatype = "list(string)"
 
 reloadcmd = cs:option(Value, "reloadcmd", translate("Reload command"),
-                translate("This command is invoked after successfully issueing or refreshing a certificate (e.g., restarting your webserver)"))
+                translate("This command is invoked after successfully issueing or refreshing a certificate (e.g., restarting your webserver)."))
 reloadcmd.optional = true
 
 return m
