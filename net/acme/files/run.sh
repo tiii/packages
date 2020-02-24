@@ -201,7 +201,7 @@ issue_cert()
     config_get keylength "$section" keylength
     config_get webroot "$section" webroot
     config_get dns "$section" dns
-    config_get reloadcmd "$section" reloadcmd ":"
+    config_get reloadcmd "$section" reloadcmd ""
 
     UPDATE_NGINX=$update_nginx
     UPDATE_UHTTPD=$update_uhttpd
