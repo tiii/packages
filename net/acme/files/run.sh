@@ -189,6 +189,7 @@ issue_cert()
     local failed_dir
     local webroot
     local dns
+    local reloadcmd
     local ret
     local domain_dir
 
@@ -200,6 +201,7 @@ issue_cert()
     config_get keylength "$section" keylength
     config_get webroot "$section" webroot
     config_get dns "$section" dns
+    config_get reloadcmd "$section" reloadcmd ":"
 
     UPDATE_NGINX=$update_nginx
     UPDATE_UHTTPD=$update_uhttpd
@@ -262,7 +264,7 @@ issue_cert()
         acme_args="$acme_args --webroot $webroot"
     fi
 
-    if ! run_acme --home "$STATE_DIR" --issue $acme_args; then
+    if ! run_acme --home "$STATE_DIR" --issue $acme_args --reloadcmd $reloadcmd; then
         failed_dir="${domain_dir}.failed-$(date +%s)"
         err "Issuing cert for $main_domain failed. Moving state to $failed_dir"
         [ -d "$domain_dir" ] && mv "$domain_dir" "$failed_dir"
