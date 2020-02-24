@@ -105,4 +105,8 @@ cred = cs:option(DynamicList, "credentials", translate("DNS API credentials"),
                            "Add multiple entries here in KEY=VAL shell variable format to supply multiple credential variables."))
 cred.datatype = "list(string)"
 
+reloadcmd = cs:option(Value, "reloadcmd", translate("Reload command"),
+                translate("This command is invoked after successfully issueing or refreshing a certificate (e.g., restarting your webserver)"))
+reloadcmd.optional = true
+
 return m
